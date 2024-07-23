@@ -3,12 +3,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 
+# Initialize the chrome webdriver
 driver = webdriver.Chrome()
+
+# Maximize the browser window
 driver.maximize_window()
 
+# Open a website
 driver.get("https://www.cowin.gov.in/")
 time.sleep(2)
 
+# Perform the actions
 DropDownButton = driver.find_elements(By.CLASS_NAME, "dropdwnbtn")
 
 FAQ = DropDownButton[3]
@@ -39,6 +44,7 @@ for handle in window_handles:
     except Exception as e:
         print(f"An Error Occured: {e}")
 
+# Frames
 frames = driver.find_elements(By.TAG_NAME, "frame")
 print("Number of frames in the page:", len(frames))
 for frame in frames:
@@ -54,4 +60,5 @@ driver.close()
 
 time.sleep(1)
 
+# Close the WebDriver
 driver.quit()
